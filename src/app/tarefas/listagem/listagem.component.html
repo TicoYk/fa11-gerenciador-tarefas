@@ -27,6 +27,7 @@
         type="checkbox"
         [value]="tarefa.id"
         [checked]="tarefa.concluida"
+        (click)="concluir(tarefa)"
       />
     </td>
     <td class="text-center" style="width: 200px">
@@ -40,7 +41,7 @@
 
       </a>
         <a href="#"
-          (click)="remover($event, tarefa)"
+          (click)="remover(tarefa)"
           title="Remover" alt="Remover"
           class="btn btn-xs btn-danger"
         >

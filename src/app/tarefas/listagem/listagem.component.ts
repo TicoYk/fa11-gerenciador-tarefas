@@ -21,11 +21,18 @@ export class ListagemComponent implements OnInit {
     return this.tarefaService.listarTodos();
   }
 
-  remover($event: any, tarefa: Tarefa): void {
-    $event.preventDefault();
+  remover(tarefa: Tarefa): void {
     if( confirm('Deseja remover a tarefa "' + tarefa.nome + '"?') && tarefa.id != null){
       this.tarefaService.remover(tarefa.id);
       this.tarefas = this.listarTodos();
     }
+  }
+
+  concluir(tarefa: Tarefa): void{
+    if (tarefa.id != null){
+      tarefa.concluida = !tarefa.concluida;
+      this.tarefaService.atualizar(tarefa);
+    }
+
   }
 }
